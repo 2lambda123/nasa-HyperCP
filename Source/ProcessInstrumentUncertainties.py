@@ -29,6 +29,7 @@ from Source.CalibrationFileReader import CalibrationFileReader
 from Source.ProcessL1b_FactoryCal import ProcessL1b_FactoryCal
 
 from Source.Uncertainty_Visualiser import Show_Uncertainties  # class for uncertainty visualisation plots
+import secrets
 
 
 class Instrument(ABC):
@@ -1361,13 +1362,11 @@ class Instrument(ABC):
         return np.asarray(cols)
 
     def gen_n_IB_sample(self, mDraws):
-        # make your own sample here min is 3, max is 6 - all values must be integer
-        import random as rand
         # seed random number generator with current systime (default behaviour of rand.seed)
-        rand.seed(a=None, version=2)
+        secrets.SystemRandom().seed(a=None, version=2)
         sample_n_IB = []
         for i in range(mDraws):
-            sample_n_IB.append(rand.randrange(3, 7, 1))  # sample_n_IB max should be 6
+            sample_n_IB.append(secrets.SystemRandom().randrange(3, 7, 1))  # sample_n_IB max should be 6
         return np.asarray(sample_n_IB)  # make numpy array to be compatible with comet maths
 
     def get_Slaper_Sl_unc(self, data, sample_data, mZ, sample_mZ, n_iter, sample_n_iter, MC_prop, mDraws):
