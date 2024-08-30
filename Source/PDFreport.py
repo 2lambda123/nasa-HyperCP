@@ -1,12 +1,12 @@
 """ Build PDF report for each file """
 import os
 import glob
-import random
 from fpdf import FPDF
 
 from Source import PATH_TO_CONFIG
 from Source.SeaBASSHeader import SeaBASSHeader
 from Source.ConfigFile import ConfigFile
+import secrets
 
 
 class PDF(FPDF):
@@ -348,7 +348,7 @@ class PDF(FPDF):
                 f'{filebasename}_L1A_ESDark_*.png' ))
             if len(fileList) > 0:
                 for i in range (0, 1): #range(0, len(fileList)):
-                    randIndx = random.randint(0, len(fileList)-1)
+                    randIndx = secrets.SystemRandom().randint(0, len(fileList)-1)
                     # self.image(fileList[i], w = 175)
                     self.image(fileList[randIndx], w = 175)
             else:
@@ -359,7 +359,7 @@ class PDF(FPDF):
 
             if len(fileList) > 0:
                 for i in range (0, 1): #range(0, len(fileList)):
-                    randIndx = random.randint(0, len(fileList)-1)
+                    randIndx = secrets.SystemRandom().randint(0, len(fileList)-1)
                     # self.image(fileList[i], w = 175)
                     self.image(fileList[randIndx], w = 175)
             else:
@@ -370,7 +370,7 @@ class PDF(FPDF):
                 f'{filebasename}_L1A_LIDark_*.png' ))
             if len(fileList) > 0:
                 for i in range (0, 1): #range(0, len(fileList)):
-                    randIndx = random.randint(0, len(fileList)-1)
+                    randIndx = secrets.SystemRandom().randint(0, len(fileList)-1)
                     # self.image(fileList[i], w = 175)
                     self.image(fileList[randIndx], w = 175)
             else:
@@ -380,7 +380,7 @@ class PDF(FPDF):
                 f'{filebasename}_L1A_LILight_*.png' ))
             if len(fileList) > 0:
                 for i in range (0, 1): #range(0, len(fileList)):
-                    randIndx = random.randint(0, len(fileList)-1)
+                    randIndx = secrets.SystemRandom().randint(0, len(fileList)-1)
                     # self.image(fileList[i], w = 175)
                     self.image(fileList[randIndx], w = 175)
             else:
@@ -391,7 +391,7 @@ class PDF(FPDF):
                 f'{filebasename}_L1A_LTDark_*.png' ))
             if len(fileList) > 0:
                 for i in range (0, 1): #range(0, len(fileList)):
-                    randIndx = random.randint(0, len(fileList)-1)
+                    randIndx = secrets.SystemRandom().randint(0, len(fileList)-1)
                     # self.image(fileList[i], w = 175)
                     self.image(fileList[randIndx], w = 175)
             else:
@@ -401,7 +401,7 @@ class PDF(FPDF):
                 f'{filebasename}_L1A_LTLight_*.png' ))
             if len(fileList) > 0:
                 for i in range (0, 1): #range(0, len(fileList)):
-                    randIndx = random.randint(0, len(fileList)-1)
+                    randIndx = secrets.SystemRandom().randint(0, len(fileList)-1)
                     # self.image(fileList[i], w = 175)
                     self.image(fileList[randIndx], w = 175)
             else:
@@ -425,17 +425,17 @@ class PDF(FPDF):
                 res = [i for i in fileList if 'L1B_ES' in i]
                 if len(res) >= 3:
                     for i in range (0, 3): #range(0, len(fileList)):
-                        randIndx = random.randint(0, len(res))
+                        randIndx = secrets.SystemRandom().randint(0, len(res))
                         self.image(res[i], w = 175)
                 res = [i for i in fileList if 'L1B_LI' in i]
                 if len(res) >= 3:
                     for i in range (0, 3): #range(0, len(fileList)):
-                        randIndx = random.randint(0, len(res))
+                        randIndx = secrets.SystemRandom().randint(0, len(res))
                         self.image(res[i], w = 175)
                 res = [i for i in fileList if 'L1B_LT' in i]
                 if len(res) >= 3:
                     for i in range (0, 3): #range(0, len(fileList)):
-                        randIndx = random.randint(0, len(res))
+                        randIndx = secrets.SystemRandom().randint(0, len(res))
                         self.image(res[i], w = 175)
             else:
                 self.multi_cell(0, 5, "None found.\n")
